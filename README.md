@@ -1,14 +1,14 @@
 # Task-Scheduler
 This repo contains implementing task scheduler from scratch using ARM-M4 processor based STM32F407 Discovery Development board
 
-# 🧩 Implementing a Preemptive Task Scheduler on ARM Cortex-M4
+# Implementing a Preemptive Task Scheduler on ARM Cortex-M4
 
 A bare-metal **preemptive task scheduler** implemented from scratch on an **ARM Cortex-M4 microcontroller** (STM32).
 This project builds a **mini-RTOS-like kernel** without using FreeRTOS or any external libraries — handling **task management, context switching, and scheduling** entirely through manual stack manipulation and exception handling.
 
 ---
 
-## 🚀 Project Overview
+## Project Overview
 
 The goal of this project was to design and implement a **round-robin preemptive scheduler** capable of running multiple independent tasks with context preservation.
 Each user task has its own stack, state, and delay mechanism, allowing efficient CPU utilization similar to a real-time operating system (RTOS).
@@ -22,29 +22,29 @@ The system uses:
 
 ---
 
-## ⚙️ Features
+## Features
 
-* 🧠 **Round-Robin Preemptive Scheduling**
+* **Round-Robin Preemptive Scheduling**
   All tasks share CPU time equally, managed via SysTick interrupts and PendSV exceptions.
 
-* 📦 **Task Control Block (TCB) Architecture**
+* **Task Control Block (TCB) Architecture**
   Each task maintains its own private stack, program counter, and state (Ready / Blocked).
 
-* ⏱️ **Timer-Based Task Delay (Blocking Mechanism)**
+* **Timer-Based Task Delay (Blocking Mechanism)**
   Tasks can voluntarily yield the CPU for a defined duration (`task_delay()`), improving efficiency.
 
-* 💤 **Idle Task Implementation**
+* **Idle Task Implementation**
   Runs only when all user tasks are blocked — useful for low-power modes.
 
-* 🔄 **Context Switching**
+* **Context Switching**
   Fully manual saving and restoring of registers (R4-R11 + stack frame) during task switches.
 
-* 💡 **LED Blinking Demonstration**
+* **LED Blinking Demonstration**
   Four LEDs toggle at independent rates, showcasing parallel task scheduling behavior.
 
 ---
 
-## 🧰 System Architecture
+## System Architecture
 
 **Core Components:**
 
@@ -61,7 +61,7 @@ The system uses:
 
 ---
 
-## 📊 Task Demonstration
+## Task Demonstration
 
 | Task      | LED Color | Blink Rate | Description                               |
 | --------- | --------- | ---------- | ----------------------------------------- |
@@ -75,7 +75,7 @@ Each LED’s toggle pattern verifies successful scheduling and context switching
 
 ---
 
-## 🧪 Technical Concepts Demonstrated
+## Technical Concepts Demonstrated
 
 * ARM Cortex-M **exception handling mechanism**
 * **Stack frame manipulation** and context preservation
@@ -87,18 +87,18 @@ Each LED’s toggle pattern verifies successful scheduling and context switching
 
 ---
 
-## 🧱 Tools and Environment
+## Tools and Environment
 
 * **MCU:** STM32F4xx (ARM Cortex-M4 core)
 * **Language:** C (bare-metal, no RTOS)
-* **IDE:** STM32CubeIDE / Keil µVision / ARM GCC Toolchain
-* **Debugger:** ST-Link / OpenOCD
+* **IDE:** STM32CubeIDE / ARM GCC Toolchain
+* **Debugger:** ST-Link 
 * **Clock Frequency:** 16 MHz
 * **Tick Rate:** 1 kHz (1 ms SysTick interval)
 
 ---
 
-## 🧩 Key Learning Outcomes
+## Key Learning Outcomes
 
 * Building a mini RTOS kernel from scratch
 * Understanding **stack models** and **context management**
@@ -108,7 +108,7 @@ Each LED’s toggle pattern verifies successful scheduling and context switching
 
 ---
 
-## 🖼️ Demo Output (Expected Behavior)
+## Demo Output (Expected Behavior)
 
 All four LEDs blink concurrently at their respective rates, even though only one is executing at any instant — proving correct **task preemption** and **context restoration**.
 
